@@ -1,0 +1,9 @@
+.page-container {
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 16px;
+}
