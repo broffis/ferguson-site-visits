@@ -7,14 +7,11 @@ import { stateSelectOptions } from "src/constants/location";
 import { participantSelectOptions } from "src/constants/participants";
 import { siteTypeOptions } from "src/constants/site-type";
 import SelectedFilters from "src/components/map/selected-filters/selected-filters.component";
-import { FilterOption } from "src/components/types/filter";
+import { SelectedFilterState } from "src/types/filter";
 
 import "./map.css";
 import VisitTable from "src/components/map/visit-table/visit-table.component";
 
-type SelectedFilterState = {
-  [key: string]: FilterOption[];
-};
 const Map = () => {
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilterState>({
     state: [],
@@ -33,8 +30,6 @@ const Map = () => {
       newFilters = [...filtersToUpdate, item];
     }
 
-    console.log({ ...currSelectedFilters, [type]: newFilters });
-
     setSelectedFilters({
       ...currSelectedFilters,
       [type]: newFilters,
@@ -43,8 +38,6 @@ const Map = () => {
 
   const interactiveMapClicked = (item) => {
     const currStateFilters = selectedFilters.state;
-
-    console.log({ item, currStateFilters });
 
     setSelectedFilters({
       ...selectedFilters,

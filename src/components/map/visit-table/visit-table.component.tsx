@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from "react";
-// import { FilterOption } from "src/components/types/filter";
 import { getSiteVists } from "src/hooks/site-visits.hook";
+import { SelectedFilterState } from "src/types/filter";
 
 type VisitTableProps = {
-  // visits?: SiteVisit[];
-  // filters: FilterOption[];
-  filters: any;
+  filters: SelectedFilterState;
 };
 
 const VisitTable: FunctionComponent<VisitTableProps> = ({ filters }) => {

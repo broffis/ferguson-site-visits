@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from "react";
 import { ChevronDownIcon } from "src/components/icons/chevron-down.component";
 import { ChevronUpIcon } from "src/components/icons/chevron-up.component";
-import { SelectOption } from "src/components/types/select";
+import { SelectOption } from "src/types/select";
 
 import "./dropdown-input.css";
 
