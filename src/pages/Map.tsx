@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import DropdownInput from "src/components/common/dropdown-input/dropdown-input.component";
-import DropdownSelect from "src/components/common/dropdown-select/dropdown-select.component";
-import ExpandableFilters from "src/components/map/expandable-filters/expandable-filters.component";
-import InteractiveMap from "src/components/map/interactive-map/interactive-map.component";
-import { stateSelectOptions } from "src/constants/location";
-import { participantSelectOptions } from "src/constants/participants";
-import { siteTypeOptions } from "src/constants/site-type";
-import SelectedFilters from "src/components/map/selected-filters/selected-filters.component";
-import { SelectedFilterState } from "src/types/filter";
+import DropdownInput from "../components/common/dropdown-input/dropdown-input.component";
+import DropdownSelect from "../components/common/dropdown-select/dropdown-select.component";
+import ExpandableFilters from "../components/map/expandable-filters/expandable-filters.component";
+import InteractiveMap from "../components/map/interactive-map/interactive-map.component";
+import { stateSelectOptions } from "../constants/location";
+import { participantSelectOptions } from "../constants/participants";
+import { siteTypeOptions } from "../constants/site-type";
+import SelectedFilters from "../components/map/selected-filters/selected-filters.component";
+import { SelectedFilterState } from "../types/filter";
+import VisitTable from "../components/map/visit-table/visit-table.component";
 
 import "./map.css";
-import VisitTable from "src/components/map/visit-table/visit-table.component";
 
 const Map = () => {
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilterState>({

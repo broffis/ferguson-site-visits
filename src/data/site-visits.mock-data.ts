@@ -1,4 +1,4 @@
-import { SiteVisit } from "src/types/site-visit";
+import { SiteVisit } from "../types/site-visit";
 
 export const mockSiteVisits = (): SiteVisit[] => [
   {

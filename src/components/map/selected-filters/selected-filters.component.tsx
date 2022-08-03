@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { PillFilterOption } from "src/types/filter";
+import { PillFilterOption } from "../../../types/filter";
 import "./selected-filters.css";
 
 const capitalizeFirstLetter = (str: string): string => {

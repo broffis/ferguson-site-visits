@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
-import { StateOption } from "src/types/states";
+import { StateOption } from "../../../types/states";
 import "./us-map.css";
 
 type UsMapProps = {
@@ -40,11 +40,13 @@ export const UsMapIcon: FunctionComponent<UsMapProps> = ({
       states[i].classList.remove("active");
     }
 
-    if (activeStates?.length) {
+    if (activeStates && activeStates.length) {
       activeStates.forEach((state) => {
-        document
-          .getElementById(state.value.toLowerCase())
-          ?.classList.add("active");
+        const el = document.getElementById(state.value.toLowerCase());
+
+        if (el) {
+          el.classList.add("active");
+        }
       });
     }
   }, [activeStates]);
