@@ -4,7 +4,6 @@ import DropdownSelect from "../components/common/dropdown-select/dropdown-select
 import ExpandableFilters from "../components/map/expandable-filters/expandable-filters.component";
 import InteractiveMap from "../components/map/interactive-map/interactive-map.component";
 import { stateSelectOptions } from "../constants/location";
-// import { participantSelectOptions } from "../constants/participants";
 import { siteTypeOptions } from "../constants/site-type";
 import SelectedFilters from "../components/map/selected-filters/selected-filters.component";
 import { SelectedFilterState } from "../types/filter";
@@ -15,11 +14,12 @@ import "./map.css";
 import { participantSelectOptions } from "../hooks/participants";
 import { FirebaseSiteVisit } from "../types/site-visit";
 
-// const getFirebaseInfo = async () => {
-//   let data;
-//   await getListofVisits().then((d) => (data = d));
-//   return data;
-// };
+/**
+ * TODO
+ * * Use firebase data to populate table
+ *    * pass firebase data into table
+ *    * use selected filters
+ */
 
 const Map = () => {
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilterState>({
