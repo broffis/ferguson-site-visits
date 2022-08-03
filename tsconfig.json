@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "outDir": "build",
     "module": "esnext",
     "target": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "sourceMap": true,
     "jsx": "preserve",
     "moduleResolution": "node",
@@ -21,10 +18,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "@types"
-    ],
+    "typeRoots": ["node_modules/@types", "@types"],
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -40,7 +34,5 @@
     "webpack",
     "jest"
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
