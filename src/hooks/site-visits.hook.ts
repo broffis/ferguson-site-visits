@@ -1,9 +1,7 @@
-import { SiteVisit } from "src/components/types/site-visit";
+import { SiteVisit } from "src/types/site-visit";
 import { mockSiteVisits } from "src/data/site-visits.mock-data";
 
 export const getSiteVists = (filters) => {
-  console.log("getSiteVisits", { filters });
-
   const { state, site, participants } = filters;
   const stateFilters = state.map((filter) => filter.value);
   const siteFilters = site.map((filter) => filter.value);
@@ -37,7 +35,6 @@ export const getSiteVists = (filters) => {
     const addressArr = visit.address.split(",");
     const stateZipVal = addressArr[addressArr.length - 1].trim();
     const [stateVal] = stateZipVal.split(" ");
-    console.log(stateVal);
 
     if (stateFilters.some((e) => e === stateVal)) {
       filteredByState.push(visit);
@@ -50,13 +47,12 @@ export const getSiteVists = (filters) => {
     ...filteredByState,
   ];
 
-  console.log({ filteredVisits });
-
   filteredVisits = filteredVisits.reduce<SiteVisit[]>(
     (finalVisits, currentVisit) => {
+      // Get ids from visits
       const filteredVisitIds = finalVisits.map((fv) => fv.id);
-      console.log({ filteredVisitIds });
 
+      // Add item if not already in array
       if (!filteredVisitIds.some((e) => e === currentVisit.id)) {
         finalVisits.push(currentVisit);
       }
@@ -64,6 +60,5 @@ export const getSiteVists = (filters) => {
     },
     []
   );
-  console.log({ filteredVisits });
   return filteredVisits;
 };

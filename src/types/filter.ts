@@ -8,3 +8,7 @@ export type FilterOption = {
   name: string;
   value: string;
 };
+
+export type SelectedFilterState = {
+  [key: string]: FilterOption[];
+};

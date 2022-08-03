@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { UsMapIcon } from "../us-map/us-map.component";
 import { stateSelectOptions } from "src/constants/location";
 import "./interactive-map.css";
-import { StateOption } from "src/components/types/states";
+import { StateOption } from "src/types/states";
 
 type InteractiveMapProps = {
   onStateClicked: (val) => void;

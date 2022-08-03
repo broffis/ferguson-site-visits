@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
-import { StateOption } from "src/components/types/states";
+import { StateOption } from "src/types/states";
 import "./us-map.css";
 
 type UsMapProps = {
