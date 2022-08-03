@@ -18,11 +18,6 @@ const ExpandableFilters: FunctionComponent<ExpandableFiltersProps> = ({
     const currExpandState = expandedFilters;
     const currFilterState = showFilters;
     const timeout = currFilterState ? 0 : 250;
-    console.log({
-      currExpandState,
-      currFilterState,
-      timeout,
-    });
     setExpandedFilters(!currExpandState);
     setShowFilters(!currFilterState);
   };

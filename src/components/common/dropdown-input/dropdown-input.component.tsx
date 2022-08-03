@@ -24,7 +24,6 @@ const DropdownInput: FunctionComponent<DropdownInputProps> = ({
   const [filteredOptions, setFilteredOptions] = useState(options);
 
   const filterList = (e) => {
-    console.log(e.target.value);
     const currFilteredOptions = options;
     let newFilteredOptions;
 

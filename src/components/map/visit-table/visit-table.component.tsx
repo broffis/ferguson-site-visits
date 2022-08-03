@@ -7,7 +7,6 @@ import "./visit-table.css";
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  console.log({ dateString, date });
   return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 
@@ -57,7 +56,8 @@ type VisitTableProps = {
 
 const VisitTable: FunctionComponent<VisitTableProps> = ({ filters }) => {
   const filteredVisits = getSiteVists(filters);
-  console.log(filteredVisits);
+  console.log("mock data", filteredVisits);
+
   return (
     <div>
       <p>Visits Table</p>

@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import DropdownInput from "../components/common/dropdown-input/dropdown-input.component";
 import DropdownSelect from "../components/common/dropdown-select/dropdown-select.component";
 import ExpandableFilters from "../components/map/expandable-filters/expandable-filters.component";
 import InteractiveMap from "../components/map/interactive-map/interactive-map.component";
 import { stateSelectOptions } from "../constants/location";
-import { participantSelectOptions } from "../constants/participants";
+// import { participantSelectOptions } from "../constants/participants";
 import { siteTypeOptions } from "../constants/site-type";
 import SelectedFilters from "../components/map/selected-filters/selected-filters.component";
 import { SelectedFilterState } from "../types/filter";
 import VisitTable from "../components/map/visit-table/visit-table.component";
+import { getListofVisits } from "./firebase";
 
 import "./map.css";
+import { participantSelectOptions } from "../hooks/participants";
+import { FirebaseSiteVisit } from "../types/site-visit";
+
+// const getFirebaseInfo = async () => {
+//   let data;
+//   await getListofVisits().then((d) => (data = d));
+//   return data;
+// };
 
 const Map = () => {
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilterState>({
@@ -18,6 +27,17 @@ const Map = () => {
     site: [],
     participants: [],
   });
+
+  const [allVisits, setAllVisits] = useState<FirebaseSiteVisit[]>([]);
+
+  const getAllFirebaseVisits = useCallback(async () => {
+    const data = await getListofVisits();
+    setAllVisits(data);
+  }, []);
+
+  useEffect(() => {
+    getAllFirebaseVisits().catch(console.error);
+  }, [getAllFirebaseVisits]);
 
   const updateSelectedFilters = (type, item) => {
     const currSelectedFilters = selectedFilters;
@@ -82,7 +102,7 @@ const Map = () => {
                 <DropdownInput
                   label="Participants"
                   type="participants"
-                  options={participantSelectOptions()}
+                  options={participantSelectOptions(allVisits)}
                   activeOptions={selectedFilters.participants}
                   onClick={updateSelectedFilters}
                 />
