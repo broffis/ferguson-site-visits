@@ -7,13 +7,10 @@ import { stateSelectOptions } from "src/constants/location";
 import { participantSelectOptions } from "src/constants/participants";
 import { siteTypeOptions } from "src/constants/site-type";
 import SelectedFilters from "src/components/map/selected-filters/selected-filters.component";
+import { FilterOption } from "src/components/types/filter";
 
 import "./map.css";
-
-type FilterOption = {
-  name: string;
-  value: string;
-};
+import VisitTable from "src/components/map/visit-table/visit-table.component";
 
 type SelectedFilterState = {
   [key: string]: FilterOption[];
@@ -36,47 +33,78 @@ const Map = () => {
       newFilters = [...filtersToUpdate, item];
     }
 
+    console.log({ ...currSelectedFilters, [type]: newFilters });
+
     setSelectedFilters({
       ...currSelectedFilters,
       [type]: newFilters,
     });
   };
 
+  const interactiveMapClicked = (item) => {
+    const currStateFilters = selectedFilters.state;
+
+    console.log({ item, currStateFilters });
+
+    setSelectedFilters({
+      ...selectedFilters,
+      state: [...currStateFilters, item],
+    });
+  };
+
+  const hasSelectedFilter = () => {
+    const allFilters = [
+      ...selectedFilters.state,
+      ...selectedFilters.site,
+      ...selectedFilters.participants,
+    ];
+    return allFilters.length > 0;
+  };
+
   return (
     <div className="page-container">
-      <InteractiveMap />
-      <div>
-        <ExpandableFilters>
-          <>
-            <DropdownSelect
-              label="State List"
-              type="state"
-              options={stateSelectOptions}
-              activeOptions={selectedFilters.state}
-              onClick={updateSelectedFilters}
+      <InteractiveMap
+        activeStates={selectedFilters.state}
+        onStateClicked={interactiveMapClicked}
+      />
+      {hasSelectedFilter() ? (
+        <>
+          <div>
+            <ExpandableFilters>
+              <>
+                <DropdownSelect
+                  label="State List"
+                  type="state"
+                  options={stateSelectOptions}
+                  activeOptions={selectedFilters.state}
+                  onClick={updateSelectedFilters}
+                />
+                <DropdownSelect
+                  label="Site type"
+                  type="site"
+                  options={siteTypeOptions}
+                  activeOptions={selectedFilters.site}
+                  onClick={updateSelectedFilters}
+                />
+                <DropdownInput
+                  label="Participants"
+                  type="participants"
+                  options={participantSelectOptions()}
+                  activeOptions={selectedFilters.participants}
+                  onClick={updateSelectedFilters}
+                />
+              </>
+            </ExpandableFilters>
+            <SelectedFilters
+              filters={selectedFilters}
+              onPillClick={updateSelectedFilters}
             />
-            <DropdownSelect
-              label="Site type"
-              type="site"
-              options={siteTypeOptions}
-              activeOptions={selectedFilters.site}
-              onClick={updateSelectedFilters}
-            />
-            <DropdownInput
-              label="Participants"
-              type="participants"
-              options={participantSelectOptions()}
-              activeOptions={selectedFilters.participants}
-              onClick={updateSelectedFilters}
-            />
-          </>
-        </ExpandableFilters>
-        <SelectedFilters
-          filters={selectedFilters}
-          onPillClick={updateSelectedFilters}
-        />
-      </div>
-      <div>Table</div>
+          </div>
+          <VisitTable filters={selectedFilters} />
+        </>
+      ) : (
+        <p className="no-filters-label">Select a state to begin</p>
+      )}
     </div>
   );
 };

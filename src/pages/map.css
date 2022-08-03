@@ -7,3 +7,9 @@
   margin: 1rem auto;
   padding: 16px;
 }
+
+.no-filters-label {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}

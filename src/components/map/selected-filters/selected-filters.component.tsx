@@ -1,14 +1,12 @@
 import React, { FunctionComponent } from "react";
+import { PillFilterOption } from "src/components/types/filter";
 import "./selected-filters.css";
 
 const capitalizeFirstLetter = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-type FilterPillProps = {
-  name?: string;
-  value?: string;
-  type?: string;
+type FilterPillProps = PillFilterOption & {
   onClick: (type, item) => void;
 };
 
@@ -26,21 +24,15 @@ const FilterPill: FunctionComponent<FilterPillProps> = ({
   </button>
 );
 
-type FilterOption = {
-  name?: string;
-  value?: string;
-  type?: string;
-};
-
 type SelectedFiltersProps = {
-  filters?: { [key: string]: FilterOption[] };
+  filters?: { [key: string]: PillFilterOption[] };
   onPillClick: (type, item) => void;
 };
 const SelectedFilters: FunctionComponent<SelectedFiltersProps> = ({
   filters,
   onPillClick,
 }) => {
-  const selectedFilters: FilterOption[] = [];
+  const selectedFilters: PillFilterOption[] = [];
   if (filters) {
     for (const [key, values] of Object.entries(filters)) {
       values.forEach((val) => {

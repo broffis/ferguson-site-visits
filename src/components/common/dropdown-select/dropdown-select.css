@@ -16,6 +16,8 @@
   background: white;
   border: 1px solid black;
   list-style: none;
+  max-height: 10rem;
+  overflow: scroll;
   padding: 0.5rem 0;
   position: absolute;
   top: 20px;
