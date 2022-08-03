@@ -1,0 +1,17 @@
+.filter-pill {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+.selected-filters {
+  padding: 1rem 0;
+}
+
+.selected-filters-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}

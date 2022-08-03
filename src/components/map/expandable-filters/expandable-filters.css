@@ -1,0 +1,36 @@
+.base-button {
+  border: none;
+  background: transparent;
+}
+
+.expandable-filters {
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  display: flex;
+  gap: 12px;
+  padding: 0.5rem;
+  transition: width 0.5s ease-in-out;
+}
+
+.expandable-filters.closed {
+  width: 13px;
+}
+
+.expandable-filters.open {
+  /* width: 100%; use this for transtion TODO: fix width error */
+  width: auto;
+}
+
+.selectable-filters {
+  display: flex;
+  transition: width 0.5s ease-in-out;
+  gap: 8px;
+}
+
+.selectable-filters.closed {
+  width: 0px;
+}
+
+.selectable-filters.open {
+  width: 100%;
+}
