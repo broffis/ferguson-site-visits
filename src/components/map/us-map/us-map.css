@@ -1,0 +1,24 @@
+.us-map {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.single-state:hover,
+.single-state.active {
+  fill: black;
+}
+
+.state {
+  fill: #d0d0d0;
+} /* default color for all states not specified below */
+.borders {
+  stroke: #ffffff;
+  stroke-width: 1;
+} /* color and width of borders between states */
+.dccircle {
+  display: yes;
+} /* set display to yes to show the circle for the District of Columbia, or none to hide it */
+.separator1 {
+  stroke: #b0b0b0;
+  stroke-width: 2;
+} /* color and width of lines around Alaska and Hawaii */

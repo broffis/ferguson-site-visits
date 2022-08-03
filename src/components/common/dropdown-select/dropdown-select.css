@@ -1,0 +1,38 @@
+.select-menu {
+  position: relative;
+  min-width: 128px;
+}
+
+.select-menu.button {
+  background: white;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.select-list {
+  background: white;
+  border: 1px solid black;
+  list-style: none;
+  max-height: 10rem;
+  overflow: scroll;
+  padding: 0.5rem 0;
+  position: absolute;
+  top: 20px;
+}
+
+.select-item {
+  padding: 0.125rem 1rem;
+}
+
+.select-item.active {
+  background: lightgray;
+}
+
+.select-item > button {
+  background: transparent;
+  border: none;
+  text-align: left;
+}
