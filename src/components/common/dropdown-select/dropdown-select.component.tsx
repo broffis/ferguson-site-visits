@@ -13,18 +13,20 @@ type DropdownSelectProps = {
   label: string;
   options: SelectOption[];
   activeOptions: SelectOption[];
-  onClick: (item) => void;
+  type: string;
+  onClick: (type, item) => void;
 };
 
 const DropdownSelect: FunctionComponent<DropdownSelectProps> = ({
   label,
+  type,
   options,
   activeOptions,
   onClick,
 }) => {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
   const selectItem = (value) => {
-    onClick(value);
+    onClick(type, value);
   };
   const toggleShowMenu = () => {
     const currMenuState = showSelectMenu;

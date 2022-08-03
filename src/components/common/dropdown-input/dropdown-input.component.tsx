@@ -11,13 +11,15 @@ type SelectOption = {
 
 type DropdownInputProps = {
   label: string;
+  type: string;
   options: SelectOption[];
   activeOptions: SelectOption[];
-  onClick: (item) => void;
+  onClick: (type, item) => void;
 };
 
 const DropdownInput: FunctionComponent<DropdownInputProps> = ({
   label,
+  type,
   options,
   activeOptions,
   onClick,
@@ -42,7 +44,7 @@ const DropdownInput: FunctionComponent<DropdownInputProps> = ({
   };
 
   const selectItem = (value) => {
-    onClick(value);
+    onClick(type, value);
   };
 
   const toggleShowMenu = () => {

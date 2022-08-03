@@ -49,3 +49,7 @@
 .db {
   display: block;
 }
+
+.w100 {
+  width: 100%;
+}
