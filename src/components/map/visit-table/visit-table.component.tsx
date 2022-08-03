@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-import { getSiteVists } from "src/hooks/site-visits.hook";
-import { SelectedFilterState } from "src/types/filter";
+import { getSiteVists } from "../../../hooks/site-visits.hook";
+import { SelectedFilterState } from "../../../types/filter";
 
 type VisitTableProps = {
   filters: SelectedFilterState;

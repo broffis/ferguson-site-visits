@@ -1,5 +1,5 @@
-import { SiteVisit } from "src/types/site-visit";
-import { mockSiteVisits } from "src/data/site-visits.mock-data";
+import { SiteVisit } from "../types/site-visit";
+import { mockSiteVisits } from "../data/site-visits.mock-data";
 
 export const getSiteVists = (filters) => {
   const { state, site, participants } = filters;
