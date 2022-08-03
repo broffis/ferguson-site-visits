@@ -3,13 +3,16 @@
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es2020",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "sourceMap": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "moduleResolution": "node",
     "rootDir": ".",
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "allowUnusedLabels": false,
     "noImplicitThis": true,
     "noImplicitAny": false,
@@ -17,9 +20,17 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types", "@types"]
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": [
     "node_modules",
@@ -28,5 +39,8 @@
     "acceptance-tests",
     "webpack",
     "jest"
+  ],
+  "include": [
+    "src"
   ]
 }

@@ -1,0 +1,59 @@
+.visitForm__container {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.visitForm__header {
+    color: rgb(100, 50, 175);
+}
+
+.visitForm__form__container {
+  
+}
+
+.visitForm__form__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.visitForm__form__name {
+  width: 50%;
+}
+
+.visitForm__form__date {
+    width: 50%;
+}
+
+.visitForm__form__type {
+
+}
+.visitForm__form__address{
+
+}
+
+.visitForm__form__poc {
+
+}
+
+.visitForm__form__goals {
+
+}
+
+.visitForm__form__mainTakes {
+
+}
+
+.visitForm__form__upload {
+
+}
+
+.visitForm__form__button {
+    background-color: rgb(100, 50, 175);
+    color: #fff;
+    font-weight: bold;
+   
+    padding: 10px;
+}
