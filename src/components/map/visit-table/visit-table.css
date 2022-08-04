@@ -1,0 +1,21 @@
+.visit-table {
+  width: 100%;
+}
+
+.visit-table-cell {
+  padding: 0.5rem;
+}
+
+.overflow-text {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}

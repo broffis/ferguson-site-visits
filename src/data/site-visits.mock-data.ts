@@ -14,7 +14,11 @@ export const mockSiteVisits = (): SiteVisit[] => [
     photos: [
       "https://mydigitalspace-my.sharepoint.com/personal/emily_mccabe_ferguson_com/Documents/Apps/Microsoft%20Forms/Share%20Your%20Site%20Visit/Question/RafflePrize_Anna%20White.png",
     ],
-    lessonsLearned: ["", "", ""],
+    lessonsLearned: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pharetra nisl vitae nisi laoreet congue. Suspendisse potenti. Nulla ligula nunc, sagittis nec efficitur eget, dictum et sapien. Donec scelerisque urna ut molestie ornare. Integer mauris odio, pharetra et nisl in, congue scelerisque enim. Duis sed urna ac ex cursus feugiat. Sed aliquet eleifend sapien ut euismod. Suspendisse rhoncus interdum diam sit amet tempus. Aenean lectus ligula, porttitor id accumsan eu, semper id nunc. ",
+      "",
+      "",
+    ],
     additonalInfo: "",
     digitalHacks: "",
   },
@@ -29,7 +33,11 @@ export const mockSiteVisits = (): SiteVisit[] => [
     locationType: "HVAC",
     otherAttendees: ["Emily"],
     photos: [],
-    lessonsLearned: ["XX", "", ""],
+    lessonsLearned: [
+      "XX",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pharetra nisl vitae nisi laoreet congue. Suspendisse potenti. Nulla ligula nunc, sagittis nec efficitur eget, dictum et sapien. Donec scelerisque urna ut molestie ornare. Integer mauris odio, pharetra et nisl in, congue scelerisque enim. Duis sed urna ac ex cursus feugiat. Sed aliquet eleifend sapien ut euismod. Suspendisse rhoncus interdum diam sit amet tempus. Aenean lectus ligula, porttitor id accumsan eu, semper id nunc. ",
+      "",
+    ],
     additonalInfo: "",
     digitalHacks: "",
   },
@@ -89,7 +97,11 @@ export const mockSiteVisits = (): SiteVisit[] => [
     locationType: "Other",
     otherAttendees: ["Anna"],
     photos: [],
-    lessonsLearned: ["XX", "", ""],
+    lessonsLearned: [
+      "XX",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pharetra nisl vitae nisi laoreet congue. Suspendisse potenti. Nulla ligula nunc, sagittis nec efficitur eget, dictum et sapien. Donec scelerisque urna ut molestie ornare. Integer mauris odio, pharetra et nisl in, congue scelerisque enim. Duis sed urna ac ex cursus feugiat. Sed aliquet eleifend sapien ut euismod. Suspendisse rhoncus interdum diam sit amet tempus. Aenean lectus ligula, porttitor id accumsan eu, semper id nunc. ",
+      "",
+    ],
     additonalInfo: "",
     digitalHacks: "",
   },

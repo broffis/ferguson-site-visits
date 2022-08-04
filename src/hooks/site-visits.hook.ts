@@ -1,43 +1,44 @@
-import { SiteVisit } from "../types/site-visit";
-import { mockSiteVisits } from "../data/site-visits.mock-data";
+import { FirebaseSiteVisit } from "../types/site-visit";
 
-export const getSiteVists = (filters) => {
+export const filterSiteVisits = (filters, data) => {
   const { state, site, participants } = filters;
   const stateFilters = state.map((filter) => filter.value);
   const siteFilters = site.map((filter) => filter.value);
   const particpantFilter = participants.map((filter) => filter.value);
-  const siteVists = mockSiteVisits();
 
-  const filteredBySiteType: SiteVisit[] = [];
-  siteVists.forEach((visit) => {
-    if (siteFilters.some((e) => e === visit.locationType)) {
+  const filteredBySiteType: FirebaseSiteVisit[] = [];
+  data.forEach((visit) => {
+    if (siteFilters.some((e) => visit.siteTypes.includes(e))) {
       filteredBySiteType.push(visit);
     }
   });
 
-  const filteredByParticipants: SiteVisit[] = [];
-  siteVists.forEach((visit) => {
-    let visitParticipants: any = [visit.fullName];
+  const filteredByParticipants: FirebaseSiteVisit[] = [];
+  data.forEach((visit) => {
+    let visitParticipants: any = [visit.associateName];
 
-    if (visit.otherAttendees.length) {
-      visitParticipants.push(visit.otherAttendees);
-    }
+    // TODO: Use this if we add in participants
+    // if (visit.otherAttendees.length) {
+    //   visitParticipants.push(visit.otherAttendees);
+    // }
 
-    visitParticipants = visitParticipants.flatMap((val) => val);
+    // visitParticipants = visitParticipants.flatMap((val) => val);
 
     if (particpantFilter.some((e) => visitParticipants.includes(e))) {
       filteredByParticipants.push(visit);
     }
   });
 
-  const filteredByState: SiteVisit[] = [];
-  siteVists.forEach((visit) => {
-    const addressArr = visit.address.split(",");
-    const stateZipVal = addressArr[addressArr.length - 1].trim();
-    const [stateVal] = stateZipVal.split(" ");
+  const filteredByState: FirebaseSiteVisit[] = [];
+  data.forEach((visit) => {
+    if (visit.siteVisitAddress) {
+      const addressArr = visit.siteVisitAddress.split(",");
+      const stateZipVal = addressArr[addressArr.length - 1].trim();
+      const [stateVal] = stateZipVal.split(" ");
 
-    if (stateFilters.some((e) => e === stateVal)) {
-      filteredByState.push(visit);
+      if (stateFilters.some((e) => e === stateVal.toUpperCase())) {
+        filteredByState.push(visit);
+      }
     }
   });
 
@@ -47,7 +48,7 @@ export const getSiteVists = (filters) => {
     ...filteredByState,
   ];
 
-  filteredVisits = filteredVisits.reduce<SiteVisit[]>(
+  filteredVisits = filteredVisits.reduce<FirebaseSiteVisit[]>(
     (finalVisits, currentVisit) => {
       // Get ids from visits
       const filteredVisitIds = finalVisits.map((fv) => fv.id);
@@ -60,5 +61,6 @@ export const getSiteVists = (filters) => {
     },
     []
   );
+
   return filteredVisits;
 };

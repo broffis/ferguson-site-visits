@@ -7,6 +7,7 @@ import {
   onSnapshot,
   query,
 } from "firebase/firestore";
+import { FirebaseSiteVisit } from "../types/site-visit";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -27,16 +28,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const getListofVisits = async () => {
-  const results: {}[] = [];
+  const results: any[] = [];
   const querySnapshot = await getDocs(collection(db, "visits"));
-  querySnapshot.forEach((doc) =>
+
+  querySnapshot.docs.forEach((doc) => {
     results.push({
+      ...doc.data(),
       id: doc.id,
-      data: doc.data(),
-    })
-  );
-  console.log(results);
-  return results;
+    });
+  });
+
+  return results as FirebaseSiteVisit[];
 };
 
 const getRealTimeVisits = async () => {
