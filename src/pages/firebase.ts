@@ -4,7 +4,6 @@ import {
   collection,
   getDocs,
   doc,
-  addDoc,
   onSnapshot,
   query,
 } from "firebase/firestore";
@@ -52,32 +51,4 @@ const getRealTimeVisits = async () => {
   });
 };
 
-const addVisit = async (
-  associateName: string,
-  siteVisitDate: string,
-  siteTypes: string[],
-  siteVisitAddress: string,
-  poc: string,
-  goals: string,
-  mainTakes: string,
-  photoUrl:string
-) => {
-  const visit = await addDoc(collection(db, "visits"), {
-    associateName: associateName,
-    siteVisitDate: siteVisitDate,
-    siteTypes: siteTypes,
-    siteVisitAddress: siteVisitAddress,
-    poc: poc,
-    goals: goals,
-    mainTakes: mainTakes,
-    photoUrl: photoUrl,
-  });
-  console.log('Visit has been added', visit.id)
-  if (visit.id) {
-    alert('Submission Successful!') 
-  } else {
-    alert('Error')
-  }
-};
-
-export { getListofVisits, addVisit };
+export { getListofVisits };
