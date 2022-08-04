@@ -4,10 +4,10 @@ import {
   collection,
   getDocs,
   doc,
+  addDoc,
   onSnapshot,
   query,
 } from "firebase/firestore";
-import { FirebaseSiteVisit } from "../types/site-visit";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -28,17 +28,16 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const getListofVisits = async () => {
-  const results: any[] = [];
+  const results: {}[] = [];
   const querySnapshot = await getDocs(collection(db, "visits"));
-
-  querySnapshot.docs.forEach((doc) => {
+  querySnapshot.forEach((doc) =>
     results.push({
-      ...doc.data(),
       id: doc.id,
-    });
-  });
-
-  return results as FirebaseSiteVisit[];
+      data: doc.data(),
+    })
+  );
+  console.log(results);
+  return results;
 };
 
 const getRealTimeVisits = async () => {
@@ -51,4 +50,32 @@ const getRealTimeVisits = async () => {
   });
 };
 
-export { getListofVisits };
+const addVisit = async (
+  associateName: string,
+  siteVisitDate: string,
+  siteTypes: string[],
+  siteVisitAddress: string,
+  poc: string,
+  goals: string,
+  mainTakes: string,
+  photoUrl: string
+) => {
+  const visit = await addDoc(collection(db, "visits"), {
+    associateName: associateName,
+    siteVisitDate: siteVisitDate,
+    siteTypes: siteTypes,
+    siteVisitAddress: siteVisitAddress,
+    poc: poc,
+    goals: goals,
+    mainTakes: mainTakes,
+    photoUrl: photoUrl,
+  });
+  console.log("Visit has been added", visit.id);
+  if (visit.id) {
+    alert("Submission Successful!");
+  } else {
+    alert("Error");
+  }
+};
+
+export { getListofVisits, addVisit };
