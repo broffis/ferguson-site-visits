@@ -1,59 +1,111 @@
 .visitForm__container {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+  margin: auto;
+  width: 50%;
+  padding: 80px;
+  border: 0.5px #000 solid;
+  background-color: #fff !important;
+}
+
+.visitForm__header__container {
+  display: flex;
+  align-items: center;
+}
+#link {
+  margin-left: auto;
+  color: rgb(0, 68, 106) !important;
+  text-decoration: none;
 }
 
 .visitForm__header {
-    color: rgb(100, 50, 175);
+  color: rgb(0, 68, 106);
+  margin-bottom: 16px;
+}
+
+.visitForm__subtitle {
+  margin-bottom: 48px;
 }
 
 .visitForm__form__container {
-  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  align-items: flex-start;
+}
+input,
+textarea {
+  height: 32px;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
 }
 
-.visitForm__form__row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 16px;
+input:active {
+  border-color: red !important;
 }
-
 .visitForm__form__name {
-  width: 50%;
+  margin-bottom: 32px;
 }
 
 .visitForm__form__date {
-    width: 50%;
+  margin-bottom: 32px;
 }
 
 .visitForm__form__type {
-
+  height: 24px;
+  width: 24px !important;
 }
-.visitForm__form__address{
-
+.visitForm__form__address {
+  margin-bottom: 32px;
 }
 
 .visitForm__form__poc {
-
+  margin-bottom: 32px;
 }
 
 .visitForm__form__goals {
-
+  margin-bottom: 32px;
+  height: 100px;
 }
 
 .visitForm__form__mainTakes {
-
+  margin-bottom: 32px;
+  height: 100px;
 }
 
 .visitForm__form__upload {
-
 }
 
 .visitForm__form__button {
-    background-color: rgb(100, 50, 175);
-    color: #fff;
-    font-weight: bold;
-   
-    padding: 10px;
+  background-color: rgb(0, 68, 106);
+  color: #fff;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  height: 48px;
+  width: 50%;
+}
+
+.visitForm__form__checkboxRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+label {
+  margin-left: 16px;
+}
+
+.visitForm__form__siteLabel {
+  margin-left: 0 !important;
+  margin-bottom: 32px;
+}
+.visitForm__form__dateLabel {
+  margin-left: 0 !important;
+  margin-bottom: 8px;
+}
+
+.visitForm__form__uploadLabel {
+  margin-left: 0 !important;
 }
