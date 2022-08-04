@@ -6,6 +6,17 @@
   background-color: #fff !important;
 }
 
+.visitForm__header__container {
+    display: flex;
+    align-items: center;
+ 
+}
+.link {
+    margin-left: auto;
+    color: rgb(0, 68, 106) !important;
+    text-decoration: none;
+}
+
 .visitForm__header {
   color: rgb(0, 68, 106);
   margin-bottom: 16px;

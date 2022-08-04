@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./VisitForm.css";
-import { addVisit, getListofVisits } from "./firebase";
+import { addVisit } from "./firebase";
+import { Link } from "react-router-dom";
 
 interface VForm {
   associateName: string;
@@ -22,7 +23,7 @@ const VisitForm = () => {
     ""
   );
 
-  const [siteTypes, setSiteTypes] = useState<VForm['siteTypes']>([])
+  const [siteTypes, setSiteTypes] = useState<VForm["siteTypes"]>([]);
   const [siteVisitAddress, setSiteVisitAddress] = useState<
     VForm["siteVisitAddress"]
   >("");
@@ -30,7 +31,6 @@ const VisitForm = () => {
   const [goals, setGoals] = useState<VForm["goals"]>("");
   const [mainTakes, setMainTakes] = useState<VForm["mainTakes"]>("");
   const [photoUrl, setPhotoUrl] = useState<VForm["photoUrl"]>("");
-
 
   const handleSubmit: VForm["onSubmit"] = (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ const VisitForm = () => {
     );
 
     if (siteTypes.length === 0) {
-      return alert('Please select a site type!')
+      return alert("Please select a site type!");
     }
 
     if (
@@ -68,21 +68,44 @@ const VisitForm = () => {
         mainTakes,
         photoUrl
       );
+      clearForm();
     }
   };
 
   const updateSiteTypes = (type: any) => {
     if (!siteTypes.includes(type.target.value)) {
-      return setSiteTypes([...siteTypes, type.target.value])
+      return setSiteTypes([...siteTypes, type.target.value]);
     } else {
-      return setSiteTypes(siteTypes.filter(el => el !== type.target.value))
+      return setSiteTypes(siteTypes.filter((el) => el !== type.target.value));
     }
-  }
+  };
 
+  const clearForm = () => {
+    const checkboxes: any = document.getElementsByClassName(
+      "visitForm__form__type"
+    );
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
+    }
+    setAssociateName("");
+    setSiteVisitDate("");
+    setSiteTypes([]);
+    setSiteVisitAddress("");
+    setPoc("");
+    setGoals("");
+    setMainTakes("");
+    setPhotoUrl("");
+  };
 
   return (
     <div className="visitForm__container">
-      <h1 className="visitForm__header">Share Your Visit</h1>
+      <div className="visitForm__header__container">
+        <h1 className="visitForm__header">Share Your Visit</h1>
+        <Link className="link" to={"/visit-map"}>
+           See Visits Map
+          </Link>
+      </div>
+
       <p className="visitForm__subtitle">
         Please submit one form per site visit
       </p>
@@ -92,13 +115,13 @@ const VisitForm = () => {
         onSubmit={(e) => handleSubmit(e)}
       >
         <input
-        required
+          required
           className="visitForm__form__name"
           placeholder="Name"
           value={associateName}
           onChange={(e) => setAssociateName(e.target.value)}
         />
-        <label className='visitForm__form__dateLabel'>Site visit date</label>
+        <label className="visitForm__form__dateLabel">Site visit date</label>
         <input
           required
           className="visitForm__form__date"
@@ -108,7 +131,9 @@ const VisitForm = () => {
           onChange={(e) => setSiteVisitDate(e.target.value)}
         />
         <br></br>
-        <label className='visitForm__form__siteLabel'>Please select at least one location type.</label>
+        <label className="visitForm__form__siteLabel">
+          Please select at least one location type.
+        </label>
         <div className="visitForm__form__checkboxRow">
           <input
             className="visitForm__form__type"
@@ -175,7 +200,28 @@ const VisitForm = () => {
           <label>Other</label>
           <br></br>
         </div>
-
+        <div className="visitForm__form__checkboxRow">
+          <input
+            className="visitForm__form__type"
+            type="checkbox"
+            name="Otherite_types"
+            value="HVAC"
+            onChange={(e) => updateSiteTypes(e)}
+          />
+          <label>Water Works</label>
+          <br></br>
+        </div>
+        <div className="visitForm__form__checkboxRow">
+          <input
+            className="visitForm__form__type"
+            type="checkbox"
+            name="Otherite_types"
+            value="HVAC"
+            onChange={(e) => updateSiteTypes(e)}
+          />
+          <label>HVAC</label>
+          <br></br>
+        </div>
         <input
           required
           className="visitForm__form__address"
@@ -205,7 +251,9 @@ const VisitForm = () => {
           value={mainTakes}
           onChange={(e) => setMainTakes(e.target.value)}
         />
-        <label className='visitForm__form__uploadLabel'>Upload Photos of Visits</label>
+        <label className="visitForm__form__uploadLabel">
+          Upload Photos of Visits
+        </label>
         <input
           className="visitForm__form__upload"
           type="file"
