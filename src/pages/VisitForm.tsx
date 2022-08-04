@@ -101,7 +101,7 @@ const VisitForm = () => {
     <div className="visitForm__container">
       <div className="visitForm__header__container">
         <h1 className="visitForm__header">Share Your Visit</h1>
-        <Link className="link" to={"/visit-map"}>
+        <Link id='link' to={"/visit-map"}>
            See Visits Map
           </Link>
       </div>

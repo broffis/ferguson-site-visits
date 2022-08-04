@@ -11,7 +11,7 @@
     align-items: center;
  
 }
-.link {
+#link {
     margin-left: auto;
     color: rgb(0, 68, 106) !important;
     text-decoration: none;
