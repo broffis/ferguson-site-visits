@@ -113,7 +113,7 @@ const Map = () => {
               onPillClick={updateSelectedFilters}
             />
           </div>
-          <VisitTable filters={selectedFilters} />
+          <VisitTable filters={selectedFilters} visitData={allVisits} />
         </>
       ) : (
         <p className="no-filters-label">Select a state to begin</p>

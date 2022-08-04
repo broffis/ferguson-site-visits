@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from "react";
-import { getSiteVists } from "../../../hooks/site-visits.hook";
+import React, { FunctionComponent, useEffect } from "react";
+import { filterSiteVisits } from "../../../hooks/site-visits.hook";
 import { SelectedFilterState } from "../../../types/filter";
-import { SiteVisit } from "../../../types/site-visit";
+import { FirebaseSiteVisit } from "../../../types/site-visit";
 
 import "./visit-table.css";
 
@@ -11,22 +11,24 @@ const formatDate = (dateString: string): string => {
 };
 
 type VisitTableRowProps = {
-  visit: SiteVisit;
+  visit: FirebaseSiteVisit;
 };
 
 const VisitTableRow: FunctionComponent<VisitTableRowProps> = ({ visit }) => {
   return (
     <tr className="visit-table-row data-row">
       <>
-        <td className="visit-table-cell data-cell">{visit.fullName}</td>
+        <td className="visit-table-cell data-cell">{visit.associateName}</td>
         <td className="visit-table-cell data-cell">
-          {formatDate(visit.startTime)}
+          {formatDate(visit.siteVisitDate)}
         </td>
-        <td className="visit-table-cell data-cell">{visit.locationType}</td>
-        <td className="visit-table-cell data-cell">{visit.address}</td>
-        <td className="visit-table-cell data-cell">{visit.pointOfContact}</td>
         <td className="visit-table-cell data-cell">
-          <p className="visit-table-data overflow-text">Goals go here</p>
+          {visit.siteTypes.join(" | ")}
+        </td>
+        <td className="visit-table-cell data-cell">{visit.siteVisitAddress}</td>
+        <td className="visit-table-cell data-cell">{visit.poc}</td>
+        <td className="visit-table-cell data-cell">
+          <p className="visit-table-data overflow-text">{visit.goals}</p>
           <a
             className="visit-table-link view-more"
             href="https://mydigitalspace.sharepoint.com/sites/ProductUXCMSDigitalPassport/SitePages/Site-Visit-Location.aspx"
@@ -35,9 +37,7 @@ const VisitTableRow: FunctionComponent<VisitTableRowProps> = ({ visit }) => {
           </a>
         </td>
         <td className="visit-table-cell data-cell">
-          <p className="visit-table-data overflow-text">
-            {visit.lessonsLearned}
-          </p>
+          <p className="visit-table-data overflow-text">{visit.mainTakes}</p>
           <a
             className="visit-table-link view-more"
             href="https://mydigitalspace.sharepoint.com/sites/ProductUXCMSDigitalPassport/SitePages/Site-Visit-Location.aspx"
@@ -52,11 +52,14 @@ const VisitTableRow: FunctionComponent<VisitTableRowProps> = ({ visit }) => {
 
 type VisitTableProps = {
   filters: SelectedFilterState;
+  visitData?: FirebaseSiteVisit[];
 };
 
-const VisitTable: FunctionComponent<VisitTableProps> = ({ filters }) => {
-  const filteredVisits = getSiteVists(filters);
-  console.log("mock data", filteredVisits);
+const VisitTable: FunctionComponent<VisitTableProps> = ({
+  filters,
+  visitData,
+}) => {
+  const visitTableData = filterSiteVisits(filters, visitData);
 
   return (
     <div>
@@ -77,7 +80,7 @@ const VisitTable: FunctionComponent<VisitTableProps> = ({ filters }) => {
         </thead>
         <tbody className="visit-table-body">
           <>
-            {filteredVisits.map((visit) => {
+            {visitTableData.map((visit) => {
               return <VisitTableRow key={visit.id} visit={visit} />;
             })}
           </>
