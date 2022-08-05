@@ -116,7 +116,7 @@ const VisitForm = () => {
       >
         <input
           required
-          className="visitForm__form__name"
+          className="visitForm__form__name input-form"
           placeholder="Name"
           value={associateName}
           onChange={(e) => setAssociateName(e.target.value)}
@@ -124,7 +124,7 @@ const VisitForm = () => {
         <label className="visitForm__form__dateLabel">Site visit date</label>
         <input
           required
-          className="visitForm__form__date"
+          className="visitForm__form__date input-form"
           name="Site visit date"
           type="date"
           value={siteVisitDate}
@@ -136,7 +136,7 @@ const VisitForm = () => {
         </label>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="site_types"
             value="Counter"
@@ -147,7 +147,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="site_types"
             value="Distribution Center"
@@ -158,7 +158,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="site_types"
             value="Warehouse"
@@ -169,7 +169,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="site_types"
             value="Fire & Fabrication"
@@ -180,7 +180,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="site_types"
             value="Showroom"
@@ -191,7 +191,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="Otherite_types"
             value="Other"
@@ -202,7 +202,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="Otherite_types"
             value="HVAC"
@@ -213,7 +213,7 @@ const VisitForm = () => {
         </div>
         <div className="visitForm__form__checkboxRow">
           <input
-            className="visitForm__form__type"
+            className="visitForm__form__type input-form"
             type="checkbox"
             name="Otherite_types"
             value="HVAC"
@@ -224,14 +224,14 @@ const VisitForm = () => {
         </div>
         <input
           required
-          className="visitForm__form__address"
+          className="visitForm__form__address input-form"
           placeholder="Site visit Address"
           value={siteVisitAddress}
           onChange={(e) => setSiteVisitAddress(e.target.value)}
         />
         <input
           required
-          className="visitForm__form__poc"
+          className="visitForm__form__poc input-form"
           placeholder="Point of contact at site visit location"
           value={poc}
           onChange={(e) => setPoc(e.target.value)}
@@ -239,14 +239,14 @@ const VisitForm = () => {
 
         <textarea
           required
-          className="visitForm__form__goals"
+          className="visitForm__form__goals textarea-form"
           placeholder="What were your goals for your site visit? What did you hop to learn?"
           value={goals}
           onChange={(e) => setGoals(e.target.value)}
         />
         <textarea
           required
-          className="visitForm__form__mainTakes"
+          className="visitForm__form__mainTakes textarea-form"
           placeholder="What were the main take aways from your site visit? Were there any direct ties to your work or work you know is being done within Digital Org?"
           value={mainTakes}
           onChange={(e) => setMainTakes(e.target.value)}
@@ -255,7 +255,7 @@ const VisitForm = () => {
           Upload Photos of Visits
         </label>
         <input
-          className="visitForm__form__upload"
+          className="visitForm__form__upload input-form"
           type="file"
           name="img"
           accept="image/*"

@@ -32,13 +32,15 @@
   margin-bottom: 100px;
   align-items: flex-start;
 }
-input,
-textarea {
+.input-form,
+.textarea-form {
   height: 32px;
   width: 100%;
   padding: 12px;
   font-size: 14px;
 }
+
+
 
 input:active {
   border-color: red !important;
